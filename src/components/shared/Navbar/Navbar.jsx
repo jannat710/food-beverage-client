@@ -4,9 +4,9 @@ import {MdFastfood} from 'react-icons/md'
 
 const Navbar = () => {
     const links = <>
-            <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/addproduct">Add Product</NavLink></li>
-            <li><NavLink to="/mycart">My Cart</NavLink></li>
+            <li className="text-[#666]"><NavLink to="/">Home</NavLink></li>
+            <li className="text-[#666]"><NavLink to="/addproduct">Add Product</NavLink></li>
+            <li className="text-[#666]"><NavLink to="/mycart">My Cart</NavLink></li>
     </>
     return (
         <div className="navbar bg-base-100 shadow-md">
@@ -21,7 +21,7 @@ const Navbar = () => {
     </div>
     <div className="flex justify-center items-center gap-2">
         <MdFastfood className="text-[#FF0000]"></MdFastfood>
-        <p className="text-[#666]">Foodie</p>
+        <p className="text-[#666] text-lg">Foodies</p>
     </div>
   </div>
   <div className="navbar-center hidden lg:flex">
@@ -30,7 +30,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Login</a>
+    <a className="btn text-[#666] normal-case">Login</a>
   </div>
 </div>
     );
