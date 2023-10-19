@@ -12,7 +12,8 @@ import Error from "../components/Error/Error";
       children : [
         {
             path:"/",
-            element:<Home></Home>
+            element:<Home></Home>,
+            loader:()=>fetch('/brand.json')
         },
         {
             path:"/addproduct",
