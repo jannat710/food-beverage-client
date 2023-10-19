@@ -5,7 +5,7 @@ const Footer = () => {
         <footer className="footer p-10 bg-stone-950 text-base-content block">
             <div className=" flex justify-between items-start">
                 <aside className="text-white">
-                    <p className="text-lime-700 font-bold text-2xl">Foodies</p>
+                    <p className="text-[#82B440] font-bold text-2xl">Foodies</p>
                     <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
                 </aside>
                 <nav className="text-white">

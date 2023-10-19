@@ -20,7 +20,7 @@ const Navbar = () => {
       </ul>
     </div>
     <div className="flex justify-center items-center gap-2">
-        <MdFastfood className="text-lime-700"></MdFastfood>
+        <MdFastfood className="text-[#82B440]"></MdFastfood>
         <p className="text-[#666] text-lg">Foodies</p>
     </div>
   </div>

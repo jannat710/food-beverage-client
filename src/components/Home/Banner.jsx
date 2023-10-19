@@ -12,7 +12,7 @@ const Banner = () => {
                         <h1 className='text-xl font-bold mb-4'>Foodies</h1>
                         <q>Good food is the foundation of genuine happiness.</q>
                         <p> - Auguste Escoffier</p>
-                        <button className='btn normal-case bg-lime-700 text-white mt-3 flex items-center justify-center'>
+                        <button className='btn normal-case bg-[#82B440] text-white mt-3 flex items-center justify-center'>
                             <p>Order Now</p>
                             <BsArrowRight></BsArrowRight>
                         </button>
