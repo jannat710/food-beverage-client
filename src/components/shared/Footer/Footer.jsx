@@ -5,7 +5,7 @@ const Footer = () => {
         <footer className="footer p-10 bg-stone-950 text-base-content block">
             <div className=" flex justify-between items-start">
                 <aside className="text-white">
-                    <p className="text-[#82B440] font-bold text-2xl">Foodies</p>
+                    <p className="text-[#82B440] font-bold text-2xl pb-5">Foodies</p>
                     <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
                 </aside>
                 <nav className="text-white">
@@ -37,7 +37,7 @@ const Footer = () => {
                 </nav>
             </div>
             
-                <p className="flex items-center justify-center pt-8">Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+                <p className="flex items-center justify-center pt-8 text-white">Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
             
         </footer>
     );
