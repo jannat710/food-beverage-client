@@ -23,17 +23,17 @@ const Register = () => {
     const handleRegister = () => {
         if (!/^(?!.*[A-Z])(?!.*[\W_]).{1,5}$/.test(password)
         ) {
-            
+
             Swal.fire({
                 icon: 'error',
                 title: 'Registration failed!',
                 text: 'Password must be less than 6 characters , do not have a capital letter , do not have a special character',
-              })
-              Swal.fire(
+            })
+            Swal.fire(
                 'Registration failed!',
                 'Password must be less than 6 characters , do not have a capital letter , do not have a special character!',
                 'error'
-              )
+            )
 
         }
         else {
@@ -43,7 +43,7 @@ const Register = () => {
                 'Good job!',
                 'Registration Successful!',
                 'success'
-              )
+            )
 
 
         }
@@ -60,22 +60,22 @@ const Register = () => {
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form className="card-body">
                             <div className="form-control">
-                            <label className="label">
-            <span className="label-text">Email</span>
-          </label>
+                                <label className="label">
+                                    <span className="label-text">Email</span>
+                                </label>
                                 <input onChange={(e) => handleEmail(e)} type="email" placeholder="email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
-                            <label className="label">
-            <span className="label-text">Password</span>
-          </label>
+                                <label className="label">
+                                    <span className="label-text">Password</span>
+                                </label>
                                 <input onChange={(e) => handlePassword(e)} type="password" placeholder="password" className="input input-bordered" required />
                             </div>
                             <div className="form-control mt-6">
-                                <button onClick={handleRegister} className="btn bg-[#82B440]">Register</button>
-                                
+                                <button onClick={handleRegister} className="btn bg-[#82B440] text-white">Register</button>
 
-                                <button>Google Sign In</button>
+
+                                
                             </div>
 
                         </form>

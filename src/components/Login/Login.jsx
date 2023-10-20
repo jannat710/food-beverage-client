@@ -46,8 +46,8 @@ const Login = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200">
-  <div className="hero-content flex-col lg:flex-row-reverse">
-    <div className="text-center lg:text-left">
+  <div className="hero-content flex-col lg:flex-col">
+    <div className="text-center">
       <h1 className="text-5xl font-bold">Login now!</h1>
     
     </div>
@@ -60,10 +60,13 @@ const Login = () => {
           <input onChange={(e) => handleEmail(e)} type="email" placeholder="email" className="input input-bordered" required />
         </div>
         <div className="form-control">
+        <label className="label">
+                                    <span className="label-text">Password</span>
+                                </label>
           <input onChange={(e) => handlePassword(e)} type="password" placeholder="password" className="input input-bordered" required />
         </div>
         <div className="form-control mt-6">
-          <button onClick={handleLogin} className="btn btn-primary">Login</button>
+          <button onClick={handleLogin} className="btn text-white bg-[#82B440]">Login</button>
           <button onClick={handleGoogleSignIn}>Google Sign In</button>
         </div>
 

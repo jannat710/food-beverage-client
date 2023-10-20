@@ -1,12 +1,20 @@
 import { NavLink } from "react-router-dom";
 import {MdFastfood} from 'react-icons/md'
-// import { useContext } from "react";
-// import { AuthContext } from "../../../Provider/AuthProvider";
+import { useContext } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
+
 
 
 const Navbar = () => {
-  // const {user} = useContext(AuthContext);
-  // console.log(user)
+const {user,logout}=useContext(AuthContext);
+console.log(user)
+
+const handleLogout =()=>{
+  logout()
+  .then()
+}
+
+
     const links = <>
             <li className="text-[#666]"><NavLink to="/">Home</NavLink></li>
             <li className="text-[#666]"><NavLink to="/addproduct">Add Product</NavLink></li>
@@ -37,7 +45,10 @@ const Navbar = () => {
   </div>
   <div className="navbar-end">
     
-    <a className="btn text-[#666] normal-case">Apply Now</a>
+    <p>{user?.displayName}</p>
+    <img className="rounded-full w-7" src={user?.photoURL} alt="" />
+    {user && <button onClick={handleLogout} className="btn bg-[#82B440] text-white">Logout</button>}
+    
   </div>
 </div>
     );

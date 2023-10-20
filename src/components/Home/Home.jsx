@@ -7,7 +7,10 @@ import Brands from "./Brands";
 
 
 
+
+
 const Home = () => {
+
 
     const brands=useLoaderData();
     return (
