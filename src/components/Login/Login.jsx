@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import toast, { Toaster } from 'react-hot-toast';
+import Swal from 'sweetalert2'
 
 
 const Login = () => {
@@ -8,7 +8,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    console.log(googleSignIn)
+
 
     const handleEmail = (text) => {
         setEmail(text.target.value);
@@ -27,25 +27,29 @@ const Login = () => {
     }
 
     const handleLogin =()=>{
-        if(email,password){
+        if((email,password)){
+            console.log("ok")
             signIn(email,password)
             .then(result=>{
-                console.log(result.user)
+                console.log(result.user);
             })
-            .catch((err) => {
-                toast.error('Login Failed!');
+            .catch((err)=>{
+                Swal.fire(
+                    'Oops!',
+                    'Invalid Login!',
+                    'error'
+                  )
             })
         }
     }
 
 
     return (
-<div>
-    <Toaster></Toaster>
-<div className="hero min-h-screen bg-base-200">
+        <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div className="text-center lg:text-left">
       <h1 className="text-5xl font-bold">Login now!</h1>
+    
     </div>
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
       <form className="card-body">
@@ -62,12 +66,10 @@ const Login = () => {
           <button onClick={handleLogin} className="btn btn-primary">Login</button>
           <button onClick={handleGoogleSignIn}>Google Sign In</button>
         </div>
-        
 
       </form>
     </div>
   </div>
-</div>
 </div>
     );
 };

@@ -6,6 +6,7 @@ import MyCart from "../components/MyCart/MyCart";
 import Error from "../components/Error/Error";
 import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
+import Navbar from "../components/shared/Navbar/Navbar";
   const router = createBrowserRouter([
     {
       path: "/",

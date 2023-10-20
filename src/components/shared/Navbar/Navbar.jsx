@@ -1,8 +1,12 @@
 import { NavLink } from "react-router-dom";
 import {MdFastfood} from 'react-icons/md'
+// import { useContext } from "react";
+// import { AuthContext } from "../../../Provider/AuthProvider";
 
 
 const Navbar = () => {
+  // const {user} = useContext(AuthContext);
+  // console.log(user)
     const links = <>
             <li className="text-[#666]"><NavLink to="/">Home</NavLink></li>
             <li className="text-[#666]"><NavLink to="/addproduct">Add Product</NavLink></li>
@@ -32,7 +36,8 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn text-[#666] normal-case">Login</a>
+    
+    <a className="btn text-[#666] normal-case">Apply Now</a>
   </div>
 </div>
     );
