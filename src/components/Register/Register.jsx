@@ -7,10 +7,20 @@ import Swal from 'sweetalert2'
 
 const Register = () => {
     const { signUp } = useContext(AuthContext);
+    const [name, setName] = useState('');
+    const [photo, setPhoto] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
+    const handleName = (text) => {
+        setEmail(text.target.value);
+        console.log(name)
+    }
+    const handlePhoto = (text) => {
+        setEmail(text.target.value);
+        console.log(photo)
+    }
     const handleEmail = (text) => {
         setEmail(text.target.value);
         console.log(email)
@@ -20,7 +30,8 @@ const Register = () => {
         console.log(password)
     }
 
-    const handleRegister = () => {
+    const handleRegister = (e) => {
+        e.preventDefault();
         if (!/^(?!.*[A-Z])(?!.*[\W_]).{1,5}$/.test(password)
         ) {
 
@@ -59,6 +70,18 @@ const Register = () => {
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form className="card-body">
+                        <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Name</span>
+                    </label>
+                    <input onChange={(e) => handleName(e)} type="text" placeholder="Name" name="name" className="input input-bordered" required />
+                </div>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Photo URL</span>
+                    </label>
+                    <input onChange={(e) => handlePhoto(e)} type="text" placeholder="Photo URL" name="photo" className="input input-bordered" required />
+                </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>

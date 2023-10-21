@@ -30,7 +30,8 @@ const Login = () => {
         });
     }
 
-    const handleLogin =()=>{
+    const handleLogin =(e)=>{
+        e.preventDefault();
         if((email,password)){
             console.log("ok")
             signIn(email,password)
