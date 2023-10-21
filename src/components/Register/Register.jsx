@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 // import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2'
+import { Link } from "react-router-dom";
 
 
 
@@ -14,11 +15,11 @@ const Register = () => {
     const [error, setError] = useState('');
 
     const handleName = (text) => {
-        setEmail(text.target.value);
+        setName(text.target.value);
         console.log(name)
     }
     const handlePhoto = (text) => {
-        setEmail(text.target.value);
+        setPhoto(text.target.value);
         console.log(photo)
     }
     const handleEmail = (text) => {
@@ -70,18 +71,18 @@ const Register = () => {
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form className="card-body">
-                        <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Name</span>
-                    </label>
-                    <input onChange={(e) => handleName(e)} type="text" placeholder="Name" name="name" className="input input-bordered" required />
-                </div>
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Photo URL</span>
-                    </label>
-                    <input onChange={(e) => handlePhoto(e)} type="text" placeholder="Photo URL" name="photo" className="input input-bordered" required />
-                </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Name</span>
+                                </label>
+                                <input onChange={(e) => handleName(e)} type="text" placeholder="Name" name="name" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Photo URL</span>
+                                </label>
+                                <input onChange={(e) => handlePhoto(e)} type="text" placeholder="Photo URL" name="photo" className="input input-bordered" required />
+                            </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -98,10 +99,11 @@ const Register = () => {
                                 <button onClick={handleRegister} className="btn bg-[#82B440] text-white">Register</button>
 
 
-                                
+
                             </div>
 
                         </form>
+                        <p className="text-center mb-4">Already have an account please <Link className="text-blue-600 font-bold" to="/login">Login</Link></p>
 
                     </div>
                 </div>
