@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -10,7 +12,7 @@ const handleSubmit = (e) => {
     const rating = form.rating.value;
     console.log(image, name, brand, type, price, description, rating)
 
-    const data = {
+    const foodData = {
         image,
         name,
         brand,
@@ -19,6 +21,22 @@ const handleSubmit = (e) => {
         description,
         rating,
     }
+    fetch('http://localhost:5000/foods', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(foodData),
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.insertedId) {
+                Swal('Food added to the database')
+            }
+        })
+        .catch(error => {
+            console.error(error)
+        })
 
 }
 
@@ -46,8 +64,8 @@ const AddProduct = () => {
                     <select name="type">
                         <option value="">Select a type</option>
                         <option value="drinks">Soft Drinks</option>
-                        <option value="Sea food">Sea Food</option>
-                        <option value="Sweets">Sweets</option>
+                        <option value="chocolate">Delicious Chocolate</option>
+                        <option value="food">Fast Food</option>
 
                     </select>
                 </div>

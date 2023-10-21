@@ -8,8 +8,7 @@ import Brands from "./Brands";
 
 
 const Home = () => {
-    //Toggle theme
-    
+
 
 
 
