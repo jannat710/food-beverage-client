@@ -22,7 +22,7 @@ import g16 from '../../../assets/g16.jpg';
 
 const PhotoGallery = () => {
     return (
-        <div className="pt-5">
+        <div className="pt-5 max-w-7xl mx-auto">
             <h1 className="text-4xl font-bold text-center">Photo <span className="text-[#82B440]">Gallery</span></h1>
             <p className=" py-5 text-center text-[#666] mt-4">Check out these amazing photos!</p>
             <Marquee direction="left" speed={70} pauseOnHover={true} gradient={true}>

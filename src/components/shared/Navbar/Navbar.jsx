@@ -38,7 +38,7 @@ const Navbar = () => {
     <li className="text-[#666]"><NavLink to="/register">Register</NavLink></li>
   </>
   return (
-    <div className="navbar bg-base-100 shadow-md font-display">
+    <div className="navbar bg-base-100 shadow-md font-display max-w-7xl mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

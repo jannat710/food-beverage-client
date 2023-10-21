@@ -2,7 +2,7 @@
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 bg-stone-950 text-base-content block font-display">
+        <footer className="footer p-10 bg-stone-950 text-base-content block font-display max-w-7xl mx-auto">
             <div className=" flex justify-between items-start">
                 <aside className="text-white">
                     <p className="text-[#82B440] font-bold text-2xl pb-5">Foodies</p>
