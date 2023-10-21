@@ -4,7 +4,7 @@ import { BsArrowRight } from 'react-icons/bs'
 
 const Banner = () => {
     return (
-        <div className="hero h-[80vh] bg-contain bg-no-repeat bg-center" style={{ backgroundImage: `url(${bg})` }}>
+        <div className="hero h-[80vh] bg-contain bg-no-repeat bg-center font-display" style={{ backgroundImage: `url(${bg})` }}>
             <div className=" bg-opacity-60"></div>
             <div className="hero-content">
                 <div className="flex justify-between items-center gap-2 md:gap-9 lg:gap-28">
@@ -18,7 +18,7 @@ const Banner = () => {
                         </button>
                     </div>
                     <div>
-                        <img className='h-[50vh] ' src={banner} alt="" />
+                        <img className='h-[30vh] md:h-[50vh] lg:h-[50vh] ' src={banner} alt="" />
                     </div>
                 </div>
             </div>

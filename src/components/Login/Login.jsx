@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from 'sweetalert2'
@@ -10,8 +10,8 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    const path= useLocation();
-    console.log(path)
+    const location = useLocation();
+    const navigate = useNavigate();
 
 
     const handleEmail = (text) => {
@@ -37,6 +37,7 @@ const Login = () => {
             signIn(email,password)
             .then(result=>{
                 console.log(result.user);
+                Navigate(location?.state ? location.state : '/');
             })
             .catch((err)=>{
                 Swal.fire(
