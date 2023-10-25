@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 
-
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light');
   const themeToggle = (e) => {
@@ -36,9 +35,11 @@ const Navbar = () => {
     <li className="text-[#666]"><NavLink to="/mycart">My Cart</NavLink></li>
     <li className="text-[#666]"><NavLink to="/login">Login</NavLink></li>
     <li className="text-[#666]"><NavLink to="/register">Register</NavLink></li>
+    <li className="text-[#666]"><NavLink to="/foods">Display Product</NavLink></li>
+
   </>
   return (
-    <div className="navbar bg-base-100 shadow-md font-display max-w-7xl mx-auto">
+    <div className="navbar bg-base-100 shadow-md font-display">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -59,6 +60,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
+
 
         <p>{user?.displayName}</p>
         <img className="rounded-full w-7" src={user?.photoURL} alt="" />

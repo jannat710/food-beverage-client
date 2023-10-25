@@ -1,5 +1,5 @@
 import bg from '../../assets/bg.jpg';
-import banner from '../../assets/pic1.jpg'
+import banner from '../../assets/pic1.png'
 import { BsArrowRight } from 'react-icons/bs'
 
 const Banner = () => {

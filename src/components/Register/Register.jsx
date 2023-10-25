@@ -1,114 +1,99 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
-// import toast, { Toaster } from 'react-hot-toast';
-import Swal from 'sweetalert2'
 import { Link } from "react-router-dom";
-
+import Swal from 'sweetalert2';
+import img from '../../assets/register.jpg'
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const Register = () => {
-    const { signUp } = useContext(AuthContext);
-    const [name, setName] = useState('');
-    const [photo, setPhoto] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const { createUser, googleSignIn } = useContext(AuthContext);
 
-    const handleName = (text) => {
-        setName(text.target.value);
-        console.log(name)
-    }
-    const handlePhoto = (text) => {
-        setPhoto(text.target.value);
-        console.log(photo)
-    }
-    const handleEmail = (text) => {
-        setEmail(text.target.value);
-        console.log(email)
-    }
-    const handlePassword = (text) => {
-        setPassword(text.target.value);
-        console.log(password)
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then((result) => {
+                console.log(result.user);
+            });
     }
 
-    const handleRegister = (e) => {
-        e.preventDefault();
-        if (!/^(?!.*[A-Z])(?!.*[\W_]).{1,5}$/.test(password)
-        ) {
+    const handleRegister = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name, email, photo, password)
 
-            Swal.fire({
-                icon: 'error',
-                title: 'Registration failed!',
-                text: 'Password must be less than 6 characters , do not have a capital letter , do not have a special character',
+
+        // Password validation
+        if (password.length > 6) {
+            Swal.fire('Error', 'Password is less than 6 characters', 'error');
+            return;
+        }
+
+        if (/[A-Z]/.test(password)) {
+            Swal.fire('Error', 'Password does not have a capital letter', 'error');
+            return;
+        }
+
+        if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+            Swal.fire('Error', 'Password does not have any special character', 'error');
+            return;
+        }
+
+
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                Swal.fire('Success', 'User created successfully!', 'success');
+                console.log(user)
             })
-            Swal.fire(
-                'Registration failed!',
-                'Password must be less than 6 characters , do not have a capital letter , do not have a special character!',
-                'error'
-            )
+            .catch(error => console.log(error))
 
-        }
-        else {
-            setError('');
-            signUp(email, password)
-            Swal.fire(
-                'Good job!',
-                'Registration Successful!',
-                'success'
-            )
-
-
-        }
-    };
+    }
     return (
-        <div>
-            {/* <Toaster></Toaster> */}
-
-            <div className="hero min-h-screen bg-base-200  max-w-7xl mx-auto">
-                <div className="hero-content flex-col lg:flex-col">
-                    <div className="text-center">
-                        <h1 className="text-5xl font-bold">Register!</h1>
+        <div className="py-10">
+            <div className="hero bg-base-200 min-h-min py-10">
+                <div className="hero-content flex-col lg:flex-row">
+                    <div className="w-full mx-auto lg:w-1/3 md:w-1/2">
+                        <img className="" src={img} alt="" />
                     </div>
-                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form className="card-body">
+                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mr-0 md:mr-0 lg:mr-16">
+                        <form onSubmit={handleRegister} className="card-body">
+                            <h1 className="text-3xl text-center font-bold"><span className="text-[#82B440]">Register</span> now!</h1>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
-                                <input onChange={(e) => handleName(e)} type="text" placeholder="Name" name="name" className="input input-bordered" required />
+                                <input type="text" name="name" placeholder="name" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Photo URL</span>
                                 </label>
-                                <input onChange={(e) => handlePhoto(e)} type="text" placeholder="Photo URL" name="photo" className="input input-bordered" required />
+                                <input type="text" name="photo" placeholder="photo" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input onChange={(e) => handleEmail(e)} type="email" placeholder="email" className="input input-bordered" required />
+                                <input type="email" name="email" placeholder="email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input onChange={(e) => handlePassword(e)} type="password" placeholder="password" className="input input-bordered" required />
+                                <input type="password" name="password" placeholder="password" className="input input-bordered" required />
                             </div>
                             <div className="form-control mt-6">
-                                <button onClick={handleRegister} className="btn bg-[#82B440] text-white">Register</button>
-
-
-
+                                <input className="btn btn-primary" type="submit" value="Register" />
+                                <button onClick={handleGoogleSignIn}>Google Sign In</button>
                             </div>
-
                         </form>
-                        <p className="text-center mb-4">Already have an account please <Link className="text-blue-600 font-bold" to="/login">Login</Link></p>
-
+                        <p className='my-4 text-center'>Already have an account ? Please <Link className='text-red-500 font-bold' to="/login">Login</Link> </p>
                     </div>
                 </div>
             </div>
-
         </div>
     );
 };

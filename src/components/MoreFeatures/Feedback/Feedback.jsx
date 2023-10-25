@@ -9,7 +9,7 @@ const Feedback = () => {
                 <p className="text-[#666] text-center py-4">The food was absolutely delicious! The flavors were incredible, and the presentation was top-notch. Highly recommend!</p>
                 <p className="text-center font-semibold text-[#666]">-Ema Waston</p>
             </div>
-            
+
         </div>
     );
 };

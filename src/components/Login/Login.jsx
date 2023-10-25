@@ -1,83 +1,63 @@
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import Swal from 'sweetalert2';
+import img from '../../assets/login.jpg'
+import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import Swal from 'sweetalert2'
 
 
 const Login = () => {
-  const { googleSignIn, signIn } = useContext(AuthContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-
+  const { signIn } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
 
-  const handleEmail = (text) => {
-    setEmail(text.target.value);
-    console.log(email)
-  }
-  const handlePassword = (text) => {
-    setPassword(text.target.value);
-    console.log(password)
-  }
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password)
 
-  const handleGoogleSignIn = () => {
-    googleSignIn()
-      .then((result) => {
-        console.log(result.user);
+    signIn(email, password)
+      .then(result => {
+        const user = result.user;
+        Swal.fire('Success', 'User loged in successfully!', 'success');
+        console.log(user);
+        Navigate(location?.state ? location.state : '/');
+      })
+      .catch(error => {
+        Swal.fire('Error', 'Invalid error!', 'error');
       });
+
   }
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    if ((email, password)) {
-      console.log("ok")
-      signIn(email, password)
-        .then(result => {
-          console.log(result.user);
-          Navigate(location?.state ? location.state : '/');
-        })
-        .catch((err) => {
-          Swal.fire(
-            'Oops!',
-            'Invalid Login!',
-            'error'
-          )
-        })
-    }
-  }
-
-
   return (
-    <div className="hero min-h-screen bg-base-200 max-w-7xl mx-auto">
-      <div className="hero-content flex-col lg:flex-col">
-        <div className="text-center">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-
-        </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form className="card-body">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input onChange={(e) => handleEmail(e)} type="email" placeholder="email" className="input input-bordered" required />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input onChange={(e) => handlePassword(e)} type="password" placeholder="password" className="input input-bordered" required />
-            </div>
-            <div className="form-control mt-6">
-              <button onClick={handleLogin} className="btn text-white bg-[#82B440]">Login</button>
-              <button onClick={handleGoogleSignIn}>Google Sign In</button>
-            </div>
-
-          </form>
-          <p className="text-center mb-4">Do not have an account <Link className="text-blue-600 font-bold" to="/register">Register</Link></p>
+    <div className="py-10">
+      <div className="hero min-h-min bg-base-200 py-10">
+        <div className="hero-content flex-col lg:flex-row">
+          <div className="w-full mx-auto lg:w-1/3 md:w-1/2">
+            <img className="" src={img} alt="" />
+          </div>
+          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mr-0 md:mr-0 lg:mr-16">
+            <form onSubmit={handleLogin} className="card-body">
+              <h1 className="text-3xl text-center font-bold"><span className="text-[#82B440]">Login</span> now!</h1>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Email</span>
+                </label>
+                <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Password</span>
+                </label>
+                <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+              </div>
+              <div className="form-control mt-6">
+                <input className="btn btn-primary" type="submit" value="Login" />
+              </div>
+            </form>
+            <p className='my-4 text-center'>New to here? Please <Link className='text-red-500 font-bold' to="/register">Register</Link> </p>
+          </div>
         </div>
       </div>
     </div>

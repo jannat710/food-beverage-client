@@ -1,3 +1,4 @@
+import { data } from "autoprefixer";
 import Swal from "sweetalert2";
 
 const handleSubmit = (e) => {
@@ -21,22 +22,24 @@ const handleSubmit = (e) => {
         description,
         rating,
     }
-    fetch('http://localhost:5000/foods', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
+    fetch('http://localhost:5000/foods',{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json",
         },
-        body: JSON.stringify(foodData),
+        body:JSON.stringify(foodData),
     })
-        .then(res => res.json())
-        .then(data => {
-            if (data.insertedId) {
-                Swal('Food added to the database')
-            }
-        })
-        .catch(error => {
-            console.error(error)
-        })
+    .then((res)=>res.json())
+    .then((data)=>{
+        console.log(data);
+        if (data.deletedCount > 0) {
+            Swal.fire(
+                'Added!',
+                'Food item added successfully.',
+                'success'
+            )}
+
+    });
 
 }
 
