@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       {
         path: "/foods",
         element: <DisplayProduct></DisplayProduct>,
-      loader:()=>fetch(`http://localhost:5000/foods`),
+      loader:()=>fetch(`https://food-beverage-server-67twtwmtp-jannatul-ferdous-projects.vercel.app/foods`),
       },
       {
         path: "/mycart",

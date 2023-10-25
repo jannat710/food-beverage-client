@@ -22,7 +22,7 @@ const handleSubmit = (e) => {
         description,
         rating,
     }
-    fetch('http://localhost:5000/foods',{
+    fetch('https://food-beverage-server-67twtwmtp-jannatul-ferdous-projects.vercel.app/foods',{
         method:"POST",
         headers:{
             "Content-Type":"application/json",
