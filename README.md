@@ -1,8 +1,13 @@
-# React + Vite
+# Project Features
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Responsive website design using TailwindCSS, Javascript, React, firebase, react router, node js, express, mongodb etc.
 
-Currently, two official plugins are available:
+- Secure user authentication and authorization using Firebase Authentication
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- User-friendly alerts using Sweet Alert to notify users of important information or actions.
+
+- Attractive Gallery section using React marquee component .
+
+- Toggle dark and light theme
+
+Live site Link:https://food-beverage-eaa3c.web.app/

@@ -26,7 +26,7 @@ const Login = () => {
         Navigate(location?.state ? location.state : '/');
       })
       .catch(error => {
-        Swal.fire('Error', 'Invalid error!', 'error');
+        Swal.fire('Error', 'Invalid!', 'error');
       });
 
   }
