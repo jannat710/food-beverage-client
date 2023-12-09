@@ -1,6 +1,6 @@
 # Project Features
 
-- Responsive website design using TailwindCSS, Javascript, React, firebase, react router, node js, express, mongodb etc.
+- Responsive Food Website design using TailwindCSS, Javascript, React, firebase, react router, node js, express, mongodb etc.
 
 - Secure user authentication and authorization using Firebase Authentication
 
